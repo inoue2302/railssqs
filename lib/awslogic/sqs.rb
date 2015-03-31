@@ -47,7 +47,7 @@ require 'digest/md5'
       end
       
       def self.poll_message_by_prallel
-        max_thread = 2 # 最大スレッド数
+        max_thread = 3 # 最大スレッド数
         ary_threads = []
         locker = Mutex::new
         max_thread.times do |i|
