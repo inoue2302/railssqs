@@ -1,0 +1,22 @@
+/usr/bin/ruby2.0 -r ./siteconf20150327-21910-1oeju3s.rb extconf.rb 
+checking for clock_gettime() in -lrt... yes
+creating Makefile
+
+make "DESTDIR=" clean
+rm -f 
+rm -f hitimes.so  *.o  *.bak mkmf.log .*.time
+
+make "DESTDIR="
+gcc -I. -I/usr/include/ruby/2.0 -I/usr/include/ruby/2.0/ruby/backward -I/usr/include/ruby/2.0 -I.   -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC -DUSE_INSTANT_CLOCK_GETTIME=1 -m64 -o hitimes_instant_osx.o -c hitimes_instant_osx.c
+gcc -I. -I/usr/include/ruby/2.0 -I/usr/include/ruby/2.0/ruby/backward -I/usr/include/ruby/2.0 -I.   -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC -DUSE_INSTANT_CLOCK_GETTIME=1 -m64 -o hitimes_stats.o -c hitimes_stats.c
+gcc -I. -I/usr/include/ruby/2.0 -I/usr/include/ruby/2.0/ruby/backward -I/usr/include/ruby/2.0 -I.   -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC -DUSE_INSTANT_CLOCK_GETTIME=1 -m64 -o hitimes_instant_clock_gettime.o -c hitimes_instant_clock_gettime.c
+gcc -I. -I/usr/include/ruby/2.0 -I/usr/include/ruby/2.0/ruby/backward -I/usr/include/ruby/2.0 -I.   -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC -DUSE_INSTANT_CLOCK_GETTIME=1 -m64 -o hitimes_interval.o -c hitimes_interval.c
+gcc -I. -I/usr/include/ruby/2.0 -I/usr/include/ruby/2.0/ruby/backward -I/usr/include/ruby/2.0 -I.   -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC -DUSE_INSTANT_CLOCK_GETTIME=1 -m64 -o hitimes_instant_windows.o -c hitimes_instant_windows.c
+gcc -I. -I/usr/include/ruby/2.0 -I/usr/include/ruby/2.0/ruby/backward -I/usr/include/ruby/2.0 -I.   -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC -DUSE_INSTANT_CLOCK_GETTIME=1 -m64 -o hitimes.o -c hitimes.c
+rm -f hitimes.so
+gcc -shared -o hitimes.so hitimes_instant_osx.o hitimes_stats.o hitimes_instant_clock_gettime.o hitimes_interval.o hitimes_instant_windows.o hitimes.o -L. -L/usr/lib64 -L. -fstack-protector -rdynamic -Wl,-export-dynamic  -m64  -L/usr/lib64/ruby/2.0 -lruby -lrt  -lpthread -lrt -ldl -lcrypt -lm   -lc
+
+make "DESTDIR=" install
+/bin/mkdir -p ./.gem.20150327-21910-13nnvep/hitimes/2.0
+exit > .RUBYARCHDIR.time
+/usr/bin/install -c -m 0755 hitimes.so ./.gem.20150327-21910-13nnvep/hitimes/2.0

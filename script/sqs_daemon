@@ -1,0 +1,23 @@
+# coding: utf-8
+require File.expand_path(File.dirname(__FILE__) + '/../config/environment')
+require File.expand_path(File.dirname(__FILE__) + '/../config/application.rb')
+
+class MyDaemon < DaemonSpawn::Base
+  def start(args)
+    # argsにはARGVがそのまま渡されてくる
+    puts "start : #{Time.now}"
+    Awslogic::Sqs.poll_message_by_prallel
+  end
+
+  def stop
+    puts "stop  : #{Time.now}"
+  end
+end
+
+MyDaemon.spawn!({
+    :working_dir => Rails.root,
+    :pid_file => File.expand_path(File.dirname(__FILE__) + '/../tmp/sqs_poll.pid'),
+    :log_file => File.expand_path(File.dirname(__FILE__) + '/../log/sqs_poll.log'),
+    :sync_log => true,
+    :singleton => true
+  })

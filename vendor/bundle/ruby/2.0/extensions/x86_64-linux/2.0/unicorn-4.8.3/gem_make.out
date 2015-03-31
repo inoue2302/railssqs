@@ -1,0 +1,22 @@
+/usr/bin/ruby2.0 -r ./siteconf20150327-20337-1e8zyap.rb extconf.rb 
+checking for SIZEOF_OFF_T in ruby.h... yes
+checking for SIZEOF_SIZE_T in ruby.h... yes
+checking for SIZEOF_LONG in ruby.h... yes
+checking for rb_str_set_len() in ruby.h... yes
+checking for gmtime_r() in time.h... yes
+creating Makefile
+
+make "DESTDIR=" clean
+rm -f 
+rm -f unicorn_http.so  *.o  *.bak mkmf.log .*.time
+
+make "DESTDIR="
+gcc -I. -I/usr/include/ruby/2.0 -I/usr/include/ruby/2.0/ruby/backward -I/usr/include/ruby/2.0 -I. -DHAVE_RB_STR_SET_LEN -DHAVE_GMTIME_R    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC -m64 -o httpdate.o -c httpdate.c
+gcc -I. -I/usr/include/ruby/2.0 -I/usr/include/ruby/2.0/ruby/backward -I/usr/include/ruby/2.0 -I. -DHAVE_RB_STR_SET_LEN -DHAVE_GMTIME_R    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC -m64 -o unicorn_http.o -c unicorn_http.c
+rm -f unicorn_http.so
+gcc -shared -o unicorn_http.so httpdate.o unicorn_http.o -L. -L/usr/lib64 -L. -fstack-protector -rdynamic -Wl,-export-dynamic  -m64  -L/usr/lib64/ruby/2.0 -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc
+
+make "DESTDIR=" install
+/bin/mkdir -p ./.gem.20150327-20337-gz4zu
+exit > .RUBYARCHDIR.time
+/usr/bin/install -c -m 0755 unicorn_http.so ./.gem.20150327-20337-gz4zu

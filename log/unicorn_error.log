@@ -1,0 +1,26 @@
+I, [2015-03-27T14:01:38.967958 #20970]  INFO -- : listening on addr=/home/rails/sample/tmp/unicorn.sock fd=10
+I, [2015-03-27T14:01:38.968438 #20970]  INFO -- : listening on addr=0.0.0.0:3000 fd=11
+I, [2015-03-27T14:01:38.968573 #20970]  INFO -- : worker=0 spawning...
+I, [2015-03-27T14:01:38.969056 #20970]  INFO -- : worker=1 spawning...
+I, [2015-03-27T14:01:38.971931 #20970]  INFO -- : master process ready
+I, [2015-03-27T14:01:38.976202 #20973]  INFO -- : worker=0 spawned pid=20973
+I, [2015-03-27T14:01:38.976404 #20973]  INFO -- : Refreshing Gem list
+I, [2015-03-27T14:01:38.986245 #20975]  INFO -- : worker=1 spawned pid=20975
+I, [2015-03-27T14:01:38.986424 #20975]  INFO -- : Refreshing Gem list
+I, [2015-03-27T14:01:41.416287 #20975]  INFO -- : worker=1 ready
+I, [2015-03-27T14:01:41.417369 #20973]  INFO -- : worker=0 ready
+I, [2015-03-27T14:28:20.633832 #21128]  INFO -- : unlinking existing socket=/home/rails/sample/tmp/unicorn.sock
+I, [2015-03-27T14:28:20.634066 #21128]  INFO -- : listening on addr=/home/rails/sample/tmp/unicorn.sock fd=10
+I, [2015-03-27T14:28:20.635766 #21128]  INFO -- : listening on addr=0.0.0.0:3000 fd=11
+I, [2015-03-27T14:28:20.635870 #21128]  INFO -- : worker=0 spawning...
+I, [2015-03-27T14:28:20.636542 #21128]  INFO -- : worker=1 spawning...
+I, [2015-03-27T14:28:20.640006 #21128]  INFO -- : master process ready
+I, [2015-03-27T14:28:20.647959 #21131]  INFO -- : worker=0 spawned pid=21131
+I, [2015-03-27T14:28:20.648189 #21131]  INFO -- : Refreshing Gem list
+I, [2015-03-27T14:28:20.654821 #21133]  INFO -- : worker=1 spawned pid=21133
+I, [2015-03-27T14:28:20.654977 #21133]  INFO -- : Refreshing Gem list
+I, [2015-03-27T14:28:23.013147 #21131]  INFO -- : worker=0 ready
+I, [2015-03-27T14:28:23.014030 #21133]  INFO -- : worker=1 ready
+I, [2015-03-27T16:53:50.784080 #21128]  INFO -- : reaped #<Process::Status: pid 21131 exit 0> worker=0
+I, [2015-03-27T16:53:50.784181 #21128]  INFO -- : reaped #<Process::Status: pid 21133 exit 0> worker=1
+I, [2015-03-27T16:53:50.784269 #21128]  INFO -- : master complete
